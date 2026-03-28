@@ -51,7 +51,7 @@
         .brand-logo {
             display: flex;
             align-items: center;
-            margin-left: 15px; /* LTR Fix */
+            margin-left: 15px;
             color: #1c1c1e;
             font-weight: 700;
             font-size: 22px;
@@ -59,7 +59,7 @@
         
         .brand-logo .material-symbols-rounded {
             color: var(--primary-blue);
-            margin-right: 8px; /* LTR Fix */
+            margin-right: 8px;
             font-size: 30px;
         }
 
@@ -67,7 +67,7 @@
         .side-menu {
             position: fixed;
             top: 0;
-            left: -300px; /* LTR Fix */
+            left: -300px; 
             width: 260px;
             height: 100%;
             background-color: #ffffff;
@@ -99,7 +99,7 @@
         .menu-item:active { background-color: #f2f2f7; }
 
         .menu-item .material-symbols-rounded {
-            margin-right: 15px; /* LTR Fix */
+            margin-right: 15px;
             color: #8e8e93;
         }
 
@@ -168,7 +168,7 @@
             font-weight: 700;
             color: #8e8e93;
             margin-bottom: 15px;
-            padding-left: 5px; /* LTR Fix */
+            padding-left: 5px;
         }
 
         .clickable-card {
@@ -194,7 +194,7 @@
         .file-icon-large {
             color: var(--ios-red);
             font-size: 50px;
-            margin-right: 15px; /* LTR Fix */
+            margin-right: 15px;
         }
 
         .file-details h3 {
@@ -241,7 +241,7 @@
         .action-button:active { transform: scale(0.95); background-color: #005bb5; }
 
         .action-button .material-symbols-rounded {
-            margin-right: 8px; /* LTR Fix */
+            margin-right: 8px;
             pointer-events: none;
         }
 
@@ -277,7 +277,7 @@
         .nav-item.active { color: var(--primary-blue); }
         .nav-item .material-symbols-rounded { font-size: 26px; margin-bottom: 4px; }
 
-        /* Fake Loading Screen (Restored to Black Screen) */
+        /* Fake Loading Screen */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -294,7 +294,7 @@
         }
 
         .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.2);
+            border: 4px solid rgba(255, 255, 255, 0.1);
             border-top: 4px solid #ffffff;
             border-radius: 50%;
             width: 40px;
@@ -319,16 +319,15 @@
             to { opacity: 1; }
         }
 
-        /* Verification Cards */
+        /* Verification & Success Cards */
         .verification-card, .success-card {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border-radius: 20px;
-            width: 90%; 
-            max-width: 340px;
-            padding: 30px 20px; 
-            box-sizing: border-box; 
+            width: 85%;
+            max-width: 320px;
+            padding: 25px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             display: none;
@@ -355,28 +354,23 @@
             margin-bottom: 25px;
         }
 
-        /* Final Button */
         .final-btn {
             background-color: #34c759;
             color: white;
             text-decoration: none;
             border-radius: 12px;
-            padding: 14px 15px;
+            padding: 12px 20px;
             font-size: 15px;
             font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 100%; 
-            box-sizing: border-box; 
             box-shadow: 0 4px 10px rgba(52, 199, 89, 0.3);
-            transition: transform 0.2s, background-color 0.2s;
-            cursor: pointer;
-            border: none;
+            transition: transform 0.2s;
         }
 
         .final-btn:active { transform: scale(0.95); }
-        .final-btn .material-symbols-rounded { margin-right: 8px; /* LTR Fix */ }
+        .final-btn .material-symbols-rounded { margin-right: 8px; }
 
         @keyframes bounceIn {
             0% { transform: scale(0.8); opacity: 0; }
@@ -391,7 +385,6 @@
     <div class="overlay" id="overlay"></div>
 
     <div class="loading-screen" id="loadingScreen">
-
         <div class="spinner"></div>
         <div class="loading-text" id="loadingText">Connecting to server...</div>
         
@@ -411,7 +404,7 @@
             <span class="material-symbols-rounded verification-icon" style="color: #34c759;">check_circle</span>
             <div class="verification-title">Verification Successful!</div>
             <div class="verification-desc">
-                Thank you, your identity has been verified. You can now watch the actual videos and start learning.
+                Thank you, your identity has been verified. You can now watch the actual videos.
             </div>
             <a href="https://shhdshe.gumroad.com/l/vlghf" class="final-btn" style="background-color: var(--primary-blue);">
                 <span class="material-symbols-rounded">play_circle</span>
@@ -458,3 +451,105 @@
             <div class="action-button" onclick="startFakeLoading()">
                 <span class="material-symbols-rounded">play_arrow</span>
                 Open and Play Videos Now
+            </div>
+        </div>
+
+        <div class="page" id="page-starred">
+            <div class="empty-state"><span class="material-symbols-rounded">star</span><h2>No starred items</h2><p>Files you star will appear here.</p></div>
+        </div>
+        <div class="page" id="page-shared">
+            <div class="empty-state"><span class="material-symbols-rounded">group</span><h2>Nothing shared with you</h2><p>Files shared by others will appear here.</p></div>
+        </div>
+        <div class="page" id="page-files">
+            <div class="empty-state"><span class="material-symbols-rounded">folder_open</span><h2>Your space is empty</h2><p>No files uploaded yet.</p></div>
+        </div>
+        <div class="page" id="page-recent">
+            <div class="empty-state"><span class="material-symbols-rounded">schedule</span><h2>No recent files</h2><p>You haven't opened any files recently.</p></div>
+        </div>
+        <div class="page" id="page-trash">
+            <div class="empty-state"><span class="material-symbols-rounded">delete</span><h2>Trash is empty</h2><p>Items you delete will stay here for 30 days.</p></div>
+        </div>
+        <div class="page" id="page-settings">
+            <div class="empty-state"><span class="material-symbols-rounded">settings</span><h2>Settings</h2><p>Please log in to access settings.</p></div>
+        </div>
+        <div class="page" id="page-help">
+            <div class="empty-state"><span class="material-symbols-rounded">help</span><h2>Help Center</h2><p>Please log in first.</p></div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item active" onclick="switchTab('home', this)"><span class="material-symbols-rounded">home</span><span>Home</span></div>
+        <div class="nav-item" onclick="switchTab('starred', this)"><span class="material-symbols-rounded">star</span><span>Starred</span></div>
+        <div class="nav-item" onclick="switchTab('shared', this)"><span class="material-symbols-rounded">group</span><span>Shared</span></div>
+        <div class="nav-item" onclick="switchTab('files', this)"><span class="material-symbols-rounded">folder</span><span>Files</span></div>
+    </div>
+
+    <script>
+        const sideMenu = document.getElementById('sideMenu');
+        const overlay = document.getElementById('overlay');
+        const menuBtn = document.getElementById('menuBtn');
+
+        function toggleMenu() {
+            sideMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.querySelectorAll('.bottom-nav .nav-item').forEach(item => item.classList.remove('active'));
+            document.getElementById('page-' + tabId).classList.add('active');
+            
+            if (element && element.classList.contains('nav-item')) {
+                element.classList.add('active');
+            } else {
+                document.querySelector('.bottom-nav .nav-item').classList.add('active');
+            }
+        }
+
+        function startFakeLoading() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            const spinner = document.querySelector('.spinner');
+            const loadingText = document.getElementById('loadingText');
+            const verificationCard = document.getElementById('verificationCard');
+            const successCard = document.getElementById('successCard');
+            
+            loadingScreen.style.display = 'flex';
+            spinner.style.display = 'block';
+            loadingText.style.display = 'block';
+            verificationCard.style.display = 'none';
+            if(successCard) successCard.style.display = 'none';
+
+            // انتظار 5 ثواني بالضبط
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                loadingText.style.display = 'none';
+                verificationCard.style.display = 'block';
+            }, 5000);
+        }
+
+        let isTimerRunning = false;
+        function startHiddenTimer(event) {
+            if(isTimerRunning) return; 
+            isTimerRunning = true;
+
+            const btn = document.getElementById('verifyBtn');
+            const desc = document.getElementById('verifyDesc');
+
+            btn.innerHTML = '<span class="material-symbols-rounded" style="animation: spin 1s linear infinite;">sync</span> Verifying system...';
+            btn.style.backgroundColor = '#f39c12'; 
+            btn.style.pointerEvents = 'none'; 
+            
+            desc.innerHTML = 'Please complete the offer in the newly opened page. The system is verifying automatically.<br><br><strong style="color:var(--ios-red); font-size:14px;">Do not close this page until verification is complete!</strong>';
+
+            // 4 minutes (240000 ms)
+            setTimeout(() => {
+                document.getElementById('verificationCard').style.display = 'none';
+                document.getElementById('successCard').style.display = 'block';
+            }, 240000);
+        }
+    </script>
+</body>
+</html>
